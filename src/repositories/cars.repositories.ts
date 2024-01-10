@@ -2,7 +2,7 @@ import database from "../database/connection";
 import { Car } from "../types/Car";
 import { ICarsRepositories } from "../types/ICarsRepositories";
 
-class CarsRepository implements ICarsRepositories {
+export class CarsRepository implements ICarsRepositories {
   async create(car: Car): Promise<Car> {
     const newCar = await database.carro.create({
       data: {
