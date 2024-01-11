@@ -3,7 +3,7 @@ import { Car } from "../types/Car";
 import { ICarsRepositories } from "../types/ICarsRepositories";
 
 export class CarsRepository implements ICarsRepositories {
-  async create(car: Car): Promise<Car> {
+  async create(car: Omit<Car, "id">): Promise<Car> {
     const newCar = await database.carro.create({
       data: {
         ...car,
@@ -14,9 +14,7 @@ export class CarsRepository implements ICarsRepositories {
   }
 
   async findAll(): Promise<Car[]> {
-    const listCars = await database.carro.findMany();
-
-    return listCars;
+    return await database.carro.findMany();
   }
 
   async findOne(id: number): Promise<Car> {
