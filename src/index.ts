@@ -21,4 +21,8 @@ app.put("/carros/update/:id", (request, response) => {
   return carsController.updateCar(request, response);
 });
 
+app.delete("/carros/remove/:id", (request, response) => {
+  return carsController.removeCar(request, response);
+});
+
 app.listen(3333);

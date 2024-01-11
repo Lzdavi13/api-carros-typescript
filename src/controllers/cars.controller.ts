@@ -36,6 +36,14 @@ class CarsController {
       .status(200)
       .json({ mensagem: "Carro atualizado com sucesso", carro: updatedCar });
   }
+
+  async removeCar(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    await this.carsServices.removeCar(Number(id));
+
+    return res.status(200).json({ mensagem: "Carro excluido com sucesso" });
+  }
 }
 
 export default new CarsController();
